@@ -1,0 +1,63 @@
+
+
+/* Text */
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+/* Header */
+
+.navbarheader {
+    margin: 0 auto;
+    background-color: #161618;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbarheader nav {
+    height: 0 auto;
+    width: 0 auto;
+}
+
+.navbarheader h1 {
+    font-family: 'Russo One', sans-serif;
+    color: white;
+    font-size: 3em;
+    margin: 25px 0 auto 20px;
+    height: 75px;
+}
+
+.navbarheader ul {
+    text-align: center;
+    list-style: none;
+    margin-top: 0px;
+    padding-top: 25px;
+}
+
+.navbarheader li {
+    text-align: center;
+    list-style: none;
+    display: inline;
+    margin-right: 20px;
+    height: 70px;
+}
+
+.navbarheader li a {
+    text-decoration: none;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2em;
+}
+
+.navbarheader input {
+    height: 35px;
+    width: 35%;
+    border-radius: 6px;
+    border: 2px black solid;
+    font-family: Arial, Helvetica, sans-serif;
+    padding-left: 0.4em;
+    padding-right: 0.4em;
+    font-size: 1em;
+}
+
+.active-navbar {
+    color: royalblue !important;
+}
