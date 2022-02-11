@@ -55,9 +55,10 @@
     font-family: Arial, Helvetica, sans-serif;
     padding-left: 0.4em;
     padding-right: 0.4em;
-    font-size: 1em;
+    font-size: 0.8em;
 }
 
 .active-navbar {
     color: royalblue !important;
 }
+

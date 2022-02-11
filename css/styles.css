@@ -6,19 +6,6 @@ body,html {
     overflow: auto;
 }
 
-/* #left-container {
-    float: left;
-    width: 20vw;
-    margin-left: 5vw;
-}
-
-#right-container{
-    float: right;
-    width: 62vw;
-    margin-right: 5vw;
-    margin-left: 5vw;
-} */
-
 #main-container {
     width: 98vw;
     padding-left: 2vw;
