@@ -27,7 +27,21 @@
         </nav>
 </header>
 
-<!-- Modal -->
+<!-- Modal Notification -->
+<div class="modal fade notification-modal" id="notification-modal" role="dialog">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header" id="notification-header"></div>
+            <div class="modal-body" id="notification-message">
+            </div>
+            <div class="modal-footer">
+                <button type="button" style="width: 100%;" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Login/Register -->
 <div class="modal fade" id="login-register" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
