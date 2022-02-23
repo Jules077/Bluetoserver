@@ -23,3 +23,7 @@ body,html {
     float: right;
     width: 65vw;
 }
+
+.login-modal {
+    z-index: 1049 !important;
+}
