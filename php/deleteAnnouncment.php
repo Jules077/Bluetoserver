@@ -3,10 +3,11 @@
 	include("db.php");
 
 	//Input data
-	$ID = $_POST['ID'];
+	$announcmentID = $_POST['ID'];
 	$userID = $_POST['userID'];
 
-    $delete = "DELETE FROM `projects` WHERE `projects`.`Id` = " . $projectId . ";";
+	//mysql qeury
+    $delete = "DELETE FROM `announcment` WHERE `announcment`.`Id` = " . $announcmentID . ";";
 
     $result = mysqli_query($con, $delete);
 

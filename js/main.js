@@ -15,6 +15,7 @@ function Notifications(NotificationMessage, NotificationType) {
     } 
 };
 
+//Notification styling api expection
 function APIException(NotificationMessage) {
     console.log(NotificationMessage);
     $("#notification-message").html("<p>"+NotificationMessage+"</p>");
@@ -22,6 +23,7 @@ function APIException(NotificationMessage) {
     $('#notification-modal').modal('show');
 }
 
+//Notification styling succesfull change
 function Successfulchange(NotificationMessage) {
     console.log(NotificationMessage);
     $("#notification-message").html("<p>"+NotificationMessage+"</p>");
@@ -29,6 +31,7 @@ function Successfulchange(NotificationMessage) {
     $('#notification-modal').modal('show');
 }
 
+//Notification styling error
 function ErrorMessage(NotificationMessage){
     console.log(NotificationMessage);
     $("#notification-message").html("<p>"+NotificationMessage+"</p>");
@@ -36,6 +39,7 @@ function ErrorMessage(NotificationMessage){
     $('#notification-modal').modal('show');
 }
 
+//login api call
 function LoginAPICall(username, password){
   var username = username;
   var password = password;
@@ -51,9 +55,12 @@ function LoginAPICall(username, password){
       success: function(dataResult){
         var dataResult = JSON.parse(dataResult);
         if(dataResult.statusCode==200){
+          //if result is succesfull set session so user keeps being loggged in
           sessionStorage.setItem('username', username);
           sessionStorage.setItem('admin', dataResult.admin);
+          //Notification logged in
           Notifications("Jay your loged in!", "successful");
+          //change the webpage too view content for logged in users
           LoggedIn(username, dataResult.admin);
           $('#login-register').modal('hide');
         }
@@ -70,6 +77,7 @@ function LoginAPICall(username, password){
   }
 }
 
+//API call for loading announcments
 function LoadAnnouncmentsAPICall(){
     $.ajax({
       url: "php/LoadAnnouncments.php",
@@ -79,6 +87,7 @@ function LoadAnnouncmentsAPICall(){
       success: function(dataResult){
         var dataResult = JSON.parse(dataResult);
         if(dataResult[0].statusCode==200){
+          //clear the list and put new data from the api call in it
           $("#announcments-list").html("");
           for(let i = 1; i < dataResult.length; i++){
             $("#announcments-list").append("<button type=\"button\" class=\"list-group-item list-group-item-action announcments-list-item\" id=\"announcment-id-"+dataResult[i].announcements_id+"\""
@@ -95,13 +104,16 @@ function LoadAnnouncmentsAPICall(){
     });
 }
 
+//posting a announcment function and api call
 function PostAnnouncment(username, admin){
+  //get all data for announcment
   var username = username;
   var admin = admin;
   var tittle = $('#text-input-title').val();
   var message = $('#textarea-message').val();
   var image = "none";
 
+  //check if neccesary content for post is filled in and make api call
   if(tittle!="" && message!="" ){
     $.ajax({
       url: "php/postAnnouncment.php",
@@ -117,6 +129,7 @@ function PostAnnouncment(username, admin){
       success: function(dataResult){
         var dataResult = JSON.parse(dataResult);
         if(dataResult.statusCode==200){
+          //after succesfull post let user know and remove filled in content and refresh the list
           Notifications("Yeah posted announcment!", "successful");
           $('#textarea-message').val("");
           $('#text-input-title').val("");
