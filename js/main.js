@@ -79,8 +79,8 @@ function LoadAnnouncmentsAPICall(){
       success: function(dataResult){
         var dataResult = JSON.parse(dataResult);
         if(dataResult[0].statusCode==200){
+          $("#announcments-list").html("");
           for(let i = 1; i < dataResult.length; i++){
-            console.log(dataResult[i]);
             $("#announcments-list").append("<button type=\"button\" class=\"list-group-item list-group-item-action announcments-list-item\" id=\"announcment-id-"+dataResult[i].announcements_id+"\""
             +" data-announcment=\""+dataResult[i].title+";"+dataResult[i].message+";"+dataResult[i].banner_image+";"+dataResult[i].created_at+"\" "+
             ">"+dataResult[i].title+"</button>");
@@ -118,6 +118,9 @@ function PostAnnouncment(username, admin){
         var dataResult = JSON.parse(dataResult);
         if(dataResult.statusCode==200){
           Notifications("Yeah posted announcment!", "successful");
+          $('#textarea-message').val("");
+          $('#text-input-title').val("");
+          LoadAnnouncmentsAPICall();
         }
         else if(dataResult.statusCode==201){
           Notifications("something did go wrong", "error");
@@ -132,10 +135,20 @@ function PostAnnouncment(username, admin){
   }
 };
 
-function LoadMainAnnouncment(data){
-  let dataArray = data.attributes["data-announcment"].value.split(";", 4);
-  var html = bbcodeParser.bbcodeToHtml(dataArray[1]);
-  $("#Announcement-body").html("<h2>"+dataArray[0]+"</h2><p>"+html+"</p><p>"+dataArray[3]+"</p>");
+function LoadMainAnnouncment(dataArray){
+  //sets selected announcment for page refresh or page redirect
+  sessionStorage.setItem('selectedAnnouncment', JSON.stringify(dataArray));
+  //checks if the announcment exsists on page
+  if ($('#Announcement-body').length){
+    //checks and changes bbcode too html
+    var html = bbcodeParser.bbcodeToHtml(dataArray[1]);
+    //show announcment in detail
+    $("#Announcement-body").html("<h2>"+dataArray[0]+"</h2><p>"+html+"</p><p>"+dataArray[3]+"</p>");
+  }
+  else{
+    //redirects too the main page where announcment view excists
+    location.href = "index.php";
+  }
 };
 
 //function to show for if users are logged in
@@ -164,6 +177,12 @@ $( document ).ready(function() {
     console.log('user not exist in the session storage');
     $("#loggedin-nav").hide();
     $("#no-login-nav").show();
+  }
+
+  //for if a announcment is selected
+  if(sessionStorage.selectedAnnouncment) {
+    let data = JSON.parse(sessionStorage.selectedAnnouncment);
+    LoadMainAnnouncment(data);
   }
   
   //##buttons click events##
@@ -199,6 +218,7 @@ $( document ).ready(function() {
 
   //load main Announcment
   $('#announcments-list').on('click', 'button.announcments-list-item', function() {
-    LoadMainAnnouncment(this);
+    let dataArray = this.attributes["data-announcment"].value.split(";", 4);
+    LoadMainAnnouncment(dataArray);
   });
 });

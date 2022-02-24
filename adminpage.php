@@ -12,9 +12,9 @@
 
 <header class="navbarheader">
 
-    <h1 class="navbarheader">Bluetoserver</h1>
+    <a href="./index.php"><h1 class="navbarheader">Bluetoserver</h1></a>
         <nav>
-            <ul class="navbarheader" id="no-login-nav">
+            <ul class="navbarheader" id="no-login-nav" style="display: none;">
                 <li class="navbarheader"><button type="button" class="btn btn-info login" data-toggle="modal" data-target="#login-register">Login/Register</button></li>
             </ul>
             <ul class="navbarheader" id="loggedin-nav" style="display: none;">
@@ -84,7 +84,7 @@
                     <label for="message">Message</label>
                     <textarea class="form-control" id="textarea-message" rows="20"></textarea>
                     <label class="form-label" for="image-select">Select image</label>
-                    <input type="file" class="form-control" id="image-select" />
+                    <input type="file" class="form-control" id="image-select" disabled />
                 </div>
                 <div class="panel-footer">
                     <button type="submit" class="btn btn-success" style="width: 45%;" id="btn-post-announcement" name="btn-post-announcement">Post</button>

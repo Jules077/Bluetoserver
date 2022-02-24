@@ -12,12 +12,12 @@
 
 <header class="navbarheader">
 
-    <h1 class="navbarheader">Bluetoserver</h1>
+    <a href="./index.php"><h1 class="navbarheader">Bluetoserver</h1></a>
         <nav>
-            <ul class="navbarheader" id="no-login-nav">
+            <ul class="navbarheader" id="no-login-nav" style="display: none;">
                 <li class="navbarheader"><button type="button" class="btn btn-info login" data-toggle="modal" data-target="#login-register">Login/Register</button></li>
             </ul>
-            <ul class="navbarheader" id="loggedin-nav">
+            <ul class="navbarheader" id="loggedin-nav" style="display: none;">
                 <li class="navbarheader"><a class="active-navbar" href="index.php">Main Page</a></li>
                 <li class="navbarheader"><a href="adminpage.php">Admin Page</a></li>
                 <li class="navbarheader"><button type="button" class="btn btn-danger logout" id="btn-logout">Logout</button></li>
