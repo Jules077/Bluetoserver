@@ -196,6 +196,7 @@ $( document ).ready(function() {
   if(sessionStorage.selectedAnnouncment) {
     let data = JSON.parse(sessionStorage.selectedAnnouncment);
     LoadMainAnnouncment(data);
+    sessionStorage.removeItem("selectedAnnouncment");
   }
   
   //##buttons click events##
